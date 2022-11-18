@@ -57,6 +57,6 @@ function eliminarUsuario(val){
     }
 }
 
-app.listen(app.get('port'), () => {
+http.listen(app.get('port'), () => {
     console.log(`server on port ${app.get('port')}`);
 });
