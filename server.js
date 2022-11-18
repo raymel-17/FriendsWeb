@@ -1,9 +1,13 @@
 var express = require('express');
 const bodyParser = require('body-parser');
+const { Server } = require('http');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http)
 //servir contenido estatico
+
+app.set('port', process.env.PORT || 3000);
+
 
 app.use(express.static(__dirname));
 
@@ -53,6 +57,6 @@ function eliminarUsuario(val){
     }
 }
 
-var server = http.listen(3000, ()=>{
-    console.log('server in the port', server.address().port);
-})
+app.listen(app.get('port'), () => {
+    console.log(`server on port ${app.get('port')}`);
+});
